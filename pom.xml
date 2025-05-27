@@ -11,7 +11,7 @@
 
 	<groupId>dev.ikm.data.tinkar</groupId>
 	<artifactId>starter-data-parent</artifactId>
-	<version>${revision}</version>
+	<version>20250527-AR-483_updates-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Starter Data Parent</name>
