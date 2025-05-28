@@ -318,9 +318,8 @@
 		</profile>
 	</profiles>
 
-
-	<!-- <modules>
+	<modules>
 		<module>tinkar-starter-data</module>
 		<module>komet-starter-data</module>
-	</modules> -->
+	</modules>
 </project>

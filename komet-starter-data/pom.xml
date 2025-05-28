@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>dev.ikm.data.tinkar</groupId>
 		<artifactId>starter-data-parent</artifactId>
-		<version>20250527-AR-483_updates-SNAPSHOT</version>
+		<version>20250527-SNAPSHOT</version>
 	</parent>
 
 	<groupId>dev.ikm.data.komet</groupId>
