@@ -37,7 +37,7 @@
 
 	<profiles>
 		<profile>
-			<id>deployReleaseDataArtifacts</id>
+			<id>stageMavenCentralRepository</id>
 			<!-- Allow Staging for this submodule -->
 			<build>
 				<pluginManagement>
