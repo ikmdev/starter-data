@@ -31,59 +31,15 @@
 						</filter>
 					</configuration>
 				</plugin>
+				<!-- Allow Staging for this submodule -->
+				<plugin>
+					<groupId>org.sonatype.central</groupId>
+					<artifactId>central-publishing-maven-plugin</artifactId>
+					<configuration>
+						<skipPublishing>false</skipPublishing>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>deployReleaseDataArtifacts</id>
-			<!-- Allow Staging for this submodule -->
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>dev.ikm.build</groupId>
-							<artifactId>central-custom-publishing-maven-plugin</artifactId>
-							<version>${central-custom-publishing-maven-plugin.version}</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-				<plugins>
-					<plugin>
-						<groupId>dev.ikm.build</groupId>
-						<artifactId>central-custom-publishing-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>create bundle</id>
-								<phase>install</phase>
-								<goals>
-									<goal>create-bundle</goal>
-								</goals>
-								<configuration>
-									<pomFile>${project.build.directory}/.flattened-pom.xml</pomFile>
-									<artifactFiles>
-										<artifactFile>${data-artifact.prefix}-unreasoned-pb.zip</artifactFile>
-										<artifactFile>${data-artifact.prefix}-reasoned-pb.zip</artifactFile>
-									</artifactFiles>
-									<passphrase>${gpg.passPhrase}</passphrase>
-								</configuration>
-							</execution>
-							<execution>
-								<id>sign-and-deploy-release-artifacts</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>publish</goal>
-								</goals>
-								<configuration>
-									<publishingServerId>${repositoryId}</publishingServerId>
-									<waitUntil>uploaded</waitUntil>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
