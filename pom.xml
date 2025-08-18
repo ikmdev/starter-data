@@ -55,7 +55,6 @@
 		<maven-dependency-plugin>3.8.1</maven-dependency-plugin>
 		<build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
 		<flatten-maven-plugin.version>1.7.2</flatten-maven-plugin.version>
-		<central-custom-publishing-maven-plugin.version>0.0.3</central-custom-publishing-maven-plugin.version>
 		<!-- Properties for Ease of Use -->
 		<data-artifact.prefix>${project.artifactId}-${project.version}</data-artifact.prefix>
 	</properties>
@@ -104,6 +103,8 @@
 					<artifactId>central-publishing-maven-plugin</artifactId>
 					<configuration>
 						<skipPublishing>true</skipPublishing>
+						<autoPublish>false</autoPublish>
+						<waitUntil>uploaded</waitUntil>
 					</configuration>
 				</plugin>
 			</plugins>
