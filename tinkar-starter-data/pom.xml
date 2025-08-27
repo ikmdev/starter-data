@@ -27,6 +27,9 @@
 								<tinkarStarterDataPattern>
 									<bindingName>TINKAR_BASE_MODEL_COMPONENT_PATTERN</bindingName>
 								</tinkarStarterDataPattern>
+								<PathsPattern>
+									<bindingName>PATHS_PATTERN</bindingName>
+								</PathsPattern>
 							</memberships>
 						</filter>
 					</configuration>
