@@ -28,7 +28,7 @@ jobs:
           token: ${{secrets.IKMDEVOPS_PAT_TOKEN}}
 
       - name: Release IKMDEV Code
-        uses: ikmdev/maven-semver-release-action@v2.6.0
+        uses: ikmdev/maven-semver-release-action@v2.7.0
         with:
           ikmdevops_pat: ${{secrets.IKMDEVOPS_PAT_TOKEN}}
           github_token: ${{secrets.GITHUB_TOKEN}}

@@ -10,7 +10,9 @@ Team Ownership - Product Owner
 
 Required for running this:
 
-1. Download and install Java 23 (Azul)
+1. Download and install Java 24 (Azul)
+2. Download and install Maven 3.9.11 or later.
+3. Download and install Git
 
 ## Building and Running
 

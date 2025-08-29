@@ -15,6 +15,6 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Build IKMDEV Code
-        uses: ikmdev/maven-clean-install-build-action@v3.4.0
+        uses: ikmdev/maven-clean-install-build-action@v3.5.0
         with:
           branch_name: ${{env.BRANCH_NAME}}
