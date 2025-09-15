@@ -30,6 +30,9 @@
 								<PathsPattern>
 									<bindingName>PATHS_PATTERN</bindingName>
 								</PathsPattern>
+								<kometStarterDataPattern>
+									<bindingName>KOMET_BASE_MODEL_COMPONENT_PATTERN</bindingName>
+								</kometStarterDataPattern>
 							</memberships>
 						</filter>
 					</configuration>
