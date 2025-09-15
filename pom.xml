@@ -45,7 +45,7 @@
 
 	<properties>
 		<maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
-		<revision>20250915</revision>
+		<revision>${maven.build.timestamp}-SNAPSHOT</revision>
 		<!-- Tinkar Starter Data Properties -->
 		<tinkar-starter-data.groupId>dev.ikm.data.tinkar</tinkar-starter-data.groupId>
 		<tinkar-starter-data.artifactId>tinkar-starter-data</tinkar-starter-data.artifactId>
