@@ -95,6 +95,7 @@
 						<updatePomFile>true</updatePomFile>
 						<keepCommentsInPom>true</keepCommentsInPom>
 						<outputDirectory>${project.build.directory}</outputDirectory>
+						<flattenedPomFilename>${project.artifactId}-${project.version}-pom.xml</flattenedPomFilename>
 					</configuration>
 				</plugin>
 				<!-- Skip Staging Plugin -->
@@ -133,6 +134,16 @@
 									<file>${project.build.directory}/${data-artifact.prefix}-unreasoned-pb.zip</file>
 									<type>zip</type>
 									<classifier>unreasoned-pb</classifier>
+								</artifact>
+								<artifact>
+									<file>${project.build.directory}/${data-artifact.prefix}-reasoned-sa.zip</file>
+									<type>zip</type>
+									<classifier>reasoned-sa</classifier>
+								</artifact>
+								<artifact>
+									<file>${project.build.directory}/${data-artifact.prefix}-unreasoned-sa.zip</file>
+									<type>zip</type>
+									<classifier>unreasoned-sa</classifier>
 								</artifact>
 							</artifacts>
 						</configuration>
@@ -336,6 +347,7 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-assembly-plugin</artifactId>
 						<configuration>
+							<attach>false</attach> <!-- Attach using build-helper-maven-plugin to support multi-stage install/deploy -->
 							<finalName>${data-artifact.prefix}</finalName>
 						</configuration>
 						<executions>
