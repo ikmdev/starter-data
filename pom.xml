@@ -173,6 +173,17 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Skip Resource Packaging -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>jar-resources</id>
+						<phase>none</phase>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -192,6 +203,7 @@
 									<goal>load-data</goal>
 								</goals>
 								<configuration>
+									<dataStore>${project.build.directory}/datastore-preprocess</dataStore>
 									<filesets>
 										<fileset>
 											<directory>${project.build.directory}/input-data</directory>
@@ -218,6 +230,7 @@
 									<goal>export-tinkar-data</goal>
 								</goals>
 								<configuration>
+									<dataStore>${project.build.directory}/datastore-preprocess</dataStore>
 									<unreasoned>true</unreasoned>
 									<fileName>${data-artifact.prefix}-unreasoned-pb.zip</fileName>
 								</configuration>
@@ -256,7 +269,6 @@
 									<goal>load-data</goal>
 								</goals>
 								<configuration>
-									<dataStore>${project.build.directory}/datastore-reasoned</dataStore>
 									<filesets>
 										<fileset>
 											<directory>${project.build.directory}</directory>
@@ -280,9 +292,6 @@
 								<goals>
 									<goal>run-full-reasoner</goal>
 								</goals>
-								<configuration>
-									<dataStore>${project.build.directory}/datastore-reasoned</dataStore>
-								</configuration>
 							</execution>
 							<!-- Export reasoned data as a protocol buffers zip file -->
 							<execution>
@@ -291,7 +300,6 @@
 									<goal>export-tinkar-data</goal>
 								</goals>
 								<configuration>
-									<dataStore>${project.build.directory}/datastore-reasoned</dataStore>
 									<exportDirectory>${project.build.directory}</exportDirectory>
 									<fileName>${data-artifact.prefix}-reasoned-pb.zip</fileName>
 									<filter></filter>
@@ -320,6 +328,41 @@
 											</includes>
 										</fileset>
 									</filesets>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<configuration>
+							<finalName>${data-artifact.prefix}</finalName>
+						</configuration>
+						<executions>
+							<!-- Zip up unreasoned spinedarray database -->
+							<execution>
+								<id>unreasoned-sa-zip</id>
+								<phase>process-classes</phase> <!-- Overriding default phase: force this execution before reasoning -->
+								<goals>
+									<goal>single</goal>
+								</goals>
+								<configuration>
+									<descriptors>
+										<descriptor>src/assembly/unreasoned-sa.xml</descriptor>
+									</descriptors>
+								</configuration>
+							</execution>
+							<!-- Zip up reasoned spinedarray database -->
+							<execution>
+								<phase>package</phase>
+								<id>reasoned-sa-zip</id>
+								<goals>
+									<goal>single</goal>
+								</goals>
+								<configuration>
+									<descriptors>
+										<descriptor>src/assembly/reasoned-sa.xml</descriptor>
+									</descriptors>
 								</configuration>
 							</execution>
 						</executions>
